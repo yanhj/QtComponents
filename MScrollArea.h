@@ -19,22 +19,22 @@ public:
     MScrollArea(QWidget* parent = nullptr);
     ~MScrollArea();
 
-    //设置悬浮部件
-    void setFloatingWidget(QWidget* w, QLayout* lay);
-    void addFloatingWidget(QWidget* w, QLayout* lay);
+    //设置吸顶部件(会清空之前设置的)
+    void setCeilingWidget(QWidget* w, QLayout* lay);
+    void addCeilingWidget(QWidget* w, QLayout* lay);
 
 protected:
     virtual void scrollContentsBy(int dx, int dy) override;
 
 private:
     //调整悬浮部件位置
-    void adjustFloatingWidget();
+    void adjustCeilingWidget();
     //重置
-    void resetFloatingWidget();
+    void resetCeilingWidget();
 
 private:
     QMap<QWidget*, QLayout*> m_mapCeiling; //需要吸顶效果的部件
-    QWidget* m_pwFloating;//当前吸顶的部件指针
+    QWidget* m_pwCeiling;//当前吸顶的部件指针
     QWidget* m_pwPlaceholder;//占位窗口
 
 };
